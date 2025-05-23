@@ -2,10 +2,12 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from circleshape import CircleShape
 
 def main():
     # Game initialization
@@ -32,6 +34,9 @@ def main():
                 return    
         screen.fill((0,0,0))
         updatable.update(dt)
+        for asteroid in asteroids:
+            if asteroid.collision(player) == True:
+                sys.exit("Game Over!")
         for item in drawable:
             item.draw(screen)
         pygame.display.flip()
