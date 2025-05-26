@@ -5,8 +5,10 @@ import pygame
 import sys
 from constants import *
 from player import Player
+from shot import Shot
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 from circleshape import CircleShape
 
 def main():
@@ -26,6 +28,8 @@ def main():
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable,)
     field = AsteroidField()
+    shots = pygame.sprite.Group()
+    Shot.containers = (shots, updatable, drawable)
 
     # Game loop
     while True:
@@ -43,4 +47,3 @@ def main():
         dt = clock.tick(60) / 1000
 if __name__ == "__main__":
     main()
-    
